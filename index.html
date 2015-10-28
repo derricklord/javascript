@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Car Program</title>
+		<style>
+			#scene{
+				height: 20px;
+				background-color: black;
+				width: 1065px;
+				margin: 0px;
+				z-index: -10;
+
+			}
+
+			#data{
+				background-color: lightblue;
+				color: white;
+				/*font-size: 2em;*/
+				width: 1065px;
+			}
+		</style>
+		<script src="car2.js"></script>
+	</head>
+	<body>
+		<div id="data">	
+		</div>
+		<div id="scene">			
+		</div>
+		<script>
+				var $ = function(id){return document.getElementById(id);}
+				var honda = new Car('Honda', 'Accord', 'silver', 4);
+				var data = $('data');
+				var scene = $('scene');
+				var car = $('car');
+
+				
+				setInterval(function(){
+					var newData = honda.update();
+					var newCar = '<img src="car.png" style="margin-left:' + newData.car + 'px;" />';
+					data.innerHTML = newData.data;
+					scene.innerHTML = newCar;
+				}, 1000/60);
+
+		</script>
+	</body>
+</html>
